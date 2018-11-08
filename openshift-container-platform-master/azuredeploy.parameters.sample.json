@@ -1,0 +1,146 @@
+﻿{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"_artifactsLocation": {
+			"value": "https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master"
+		},
+		"masterVmSize": {
+			"value": "Standard_E2s_v3"
+		},
+		"infraVmSize": {
+			"value": "Standard_D4s_v3"
+		},
+		"nodeVmSize": {
+			"value": "Standard_D4s_v3"
+		},
+		"cnsVmSize": {
+			"value": "Standard_E4s_v3"
+		},
+		"osImageType": {
+			"value": "defaultgallery"
+		},
+		"marketplaceOsImage": {
+			"value": {
+				"publisher": "RedHat",
+				"offer": "RHEL",
+				"sku": "7-RAW",
+				"version": "latest"
+			}
+		},
+		"storageKind": {
+			"value": "managed"
+		},
+		"openshiftClusterPrefix": {
+			"value": "ocpcluster"
+		},
+		"masterInstanceCount": {
+			"value": 3
+		},
+		"infraInstanceCount": {
+			"value": 3
+		},
+		"nodeInstanceCount": {
+			"value": 3
+		},
+		"dataDiskSize": {
+			"value": 128
+		},
+		"adminUsername": {
+			"value": "clusteradmin"
+		},
+		"openshiftPassword": {
+			"value": "GEN-PASSWORD"
+		},
+		"enableMetrics": {
+			"value": "false"
+		},
+		"enableLogging": {
+			"value": "false"
+		},
+		"enableCNS": {
+			"value": "false"
+		},
+		"rhsmUsernameOrOrgId": {
+			"value": "rhsmuser"
+		},
+		"rhsmPasswordOrActivationKey": {
+			"value": "GEN-PASSWORD"
+		},
+		"rhsmPoolId": {
+			"value": "8a81234151631b3201a5e6f4322e42a9"
+		},
+		"rhsmBrokerPoolId": {
+			"value": "8a81234151631b3201a5e6f4322e42a9"
+		},
+		"sshPublicKey": {
+			"value": "GEN-SSH-PUB-KEY"
+		},
+		"keyVaultResourceGroup": {
+			"value": "kvrg"
+		},
+		"keyVaultName": {
+			"value": "keyvaultname"
+		},
+		"keyVaultSecret": {
+			"value": "mysecret"
+		},
+		"enableAzure": {
+			"value": "true"
+		},
+		"aadClientId": {
+			"value": "12345678-abcd-47bf-9b6f-12345678abcd"
+		},
+		"aadClientSecret": {
+			"value": "GEN-PASSWORD"
+		},
+		"defaultSubDomainType": {
+			"value": "nipio"
+		},
+		"defaultSubDomain": {
+			"value": "domain.com"
+		},
+		"virtualNetworkNewOrExisting": {
+			"value": "new"
+		},
+		"virtualNetworkResourceGroupName": {
+			"value": "vnetrg"
+		},
+		"virtualNetworkName": {
+			"value": "openshiftvnet"
+		},
+		"addressPrefixes": {
+			"value": "10.0.0.0/14"
+		},
+		"masterSubnetName": {
+			"value": "mastersubnet"
+		},
+		"masterSubnetPrefix": {
+			"value": "10.1.0.0/16"
+		},
+		"nodeSubnetName": {
+			"value": "nodesubnet"
+		},
+		"nodeSubnetPrefix": {
+			"value": "10.2.0.0/16"
+		},
+		"masterClusterType": {
+			"value": "public"
+		},
+		"masterPrivateClusterIp": {
+			"value": "10.1.0.200"
+		},
+		"masterPrivateClusterDns": {
+			"value": "internalmaster.net"
+		},
+		"routerClusterType": {
+			"value": "public"
+		},
+		"routerPrivateClusterIp": {
+			"value": "10.1.0.201"
+		},
+		"customHeaderImage": {
+			"value": "https://client.power.sh/logo.png"
+		}
+	}
+}
