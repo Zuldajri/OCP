@@ -2,33 +2,19 @@
 	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
-		"_artifactsLocation": {
-			"type": "string",
-			"metadata": {
-				"description": "Base URL for Template Files",
-				"artifactsBaseUrl": ""
-			},
-			"defaultValue": "https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master"
-		},
+    "_artifactsLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "Base URL for Template Files",
+        "artifactsBaseUrl": ""
+      },
+      "defaultValue": "https://raw.githubusercontent.com/Zuldajri/OCP/master/openshift-container-platform-master"
+    },
 		"masterVmSize": {
 			"type": "string",
-			"defaultValue": "Standard_E2s_v3",
+			"defaultValue": "Standard_D4s_v3",
 			"allowedValues": [
-				"Standard_A4", "Standard_A5", "Standard_A6", "Standard_A7", "Standard_A8", "Standard_A9", "Standard_A10", "Standard_A11",
-				"Standard_D2", "Standard_D3", "Standard_D4",
-				"Standard_D11", "Standard_D12", "Standard_D13", "Standard_D14",
-				"Standard_D2_v2", "Standard_D3_v2", "Standard_D4_v2", "Standard_D5_v2",
-				"Standard_D11_v2", "Standard_D12_v2", "Standard_D13_v2", "Standard_D14_v2",
-				"Standard_G1", "Standard_G2", "Standard_G3", "Standard_G4", "Standard_G5",
-				"Standard_DS2", "Standard_DS3", "Standard_DS4",
-				"Standard_DS11", "Standard_DS12", "Standard_DS13", "Standard_DS14",
-				"Standard_DS2_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2",
-				"Standard_DS11_v2", "Standard_DS12_v2", "Standard_DS13_v2", "Standard_DS14_v2",
-				"Standard_GS1", "Standard_GS2", "Standard_GS3", "Standard_GS4", "Standard_GS5",
-				"Standard_D2_v3", "Standard_D4_v3", "Standard_D8_v3", "Standard_D16_v3", "Standard_D32_v3", "Standard_D64_v3",
-				"Standard_D2s_v3", "Standard_D4s_v3", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3", "Standard_D64s_v3",
-				"Standard_E2_v3", "Standard_E4_v3", "Standard_E8_v3", "Standard_E16_v3", "Standard_E32_v3", "Standard_E64_v3",
-				"Standard_E2s_v3", "Standard_E4s_v3", "Standard_E8s_v3", "Standard_E16s_v3", "Standard_E32s_v3", "Standard_E64s_v3"
+				"Standard_D2_v3", "Standard_D4_v3", "Standard_D8_v3"
 			],
 			"metadata": {
 				"description": "OpenShift Master VM size"
@@ -38,21 +24,7 @@
 			"type": "string",
 			"defaultValue": "Standard_D4s_v3",
 			"allowedValues": [
-				"Standard_A4", "Standard_A5", "Standard_A6", "Standard_A7", "Standard_A8", "Standard_A9", "Standard_A10", "Standard_A11",
-				"Standard_D2", "Standard_D3", "Standard_D4",
-				"Standard_D11", "Standard_D12", "Standard_D13", "Standard_D14",
-				"Standard_D2_v2", "Standard_D3_v2", "Standard_D4_v2", "Standard_D5_v2",
-				"Standard_D11_v2", "Standard_D12_v2", "Standard_D13_v2", "Standard_D14_v2",
-				"Standard_G1", "Standard_G2", "Standard_G3", "Standard_G4", "Standard_G5",
-				"Standard_DS2", "Standard_DS3", "Standard_DS4",
-				"Standard_DS11", "Standard_DS12", "Standard_DS13", "Standard_DS14",
-				"Standard_DS2_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2",
-				"Standard_DS11_v2", "Standard_DS12_v2", "Standard_DS13_v2", "Standard_DS14_v2",
-				"Standard_GS1", "Standard_GS2", "Standard_GS3", "Standard_GS4", "Standard_GS5",
-				"Standard_D2_v3", "Standard_D4_v3", "Standard_D8_v3", "Standard_D16_v3", "Standard_D32_v3", "Standard_D64_v3",
-				"Standard_D2s_v3", "Standard_D4s_v3", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3", "Standard_D64s_v3",
-				"Standard_E2_v3", "Standard_E4_v3", "Standard_E8_v3", "Standard_E16_v3", "Standard_E32_v3", "Standard_E64_v3",
-				"Standard_E2s_v3", "Standard_E4s_v3", "Standard_E8s_v3", "Standard_E16s_v3", "Standard_E32s_v3", "Standard_E64s_v3"
+				"Standard_D2s_v3", "Standard_D4s_v3", "Standard_D8s_v3"
 			],
 			"metadata": {
 				"description": "OpenShift Infra Node VM(s) size"
@@ -62,21 +34,7 @@
 			"type": "string",
 			"defaultValue": "Standard_D4s_v3",
 			"allowedValues": [
-				"Standard_A4", "Standard_A5", "Standard_A6", "Standard_A7", "Standard_A8", "Standard_A9", "Standard_A10", "Standard_A11",
-				"Standard_D2", "Standard_D3", "Standard_D4",
-				"Standard_D11", "Standard_D12", "Standard_D13", "Standard_D14",
-				"Standard_D2_v2", "Standard_D3_v2", "Standard_D4_v2", "Standard_D5_v2",
-				"Standard_D11_v2", "Standard_D12_v2", "Standard_D13_v2", "Standard_D14_v2",
-				"Standard_G1", "Standard_G2", "Standard_G3", "Standard_G4", "Standard_G5",
-				"Standard_DS2", "Standard_DS3", "Standard_DS4",
-				"Standard_DS11", "Standard_DS12", "Standard_DS13", "Standard_DS14",
-				"Standard_DS2_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2",
-				"Standard_DS11_v2", "Standard_DS12_v2", "Standard_DS13_v2", "Standard_DS14_v2",
-				"Standard_GS1", "Standard_GS2", "Standard_GS3", "Standard_GS4", "Standard_GS5",
-				"Standard_D2_v3", "Standard_D4_v3", "Standard_D8_v3", "Standard_D16_v3", "Standard_D32_v3", "Standard_D64_v3",
-				"Standard_D2s_v3", "Standard_D4s_v3", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3", "Standard_D64s_v3",
-				"Standard_E2_v3", "Standard_E4_v3", "Standard_E8_v3", "Standard_E16_v3", "Standard_E32_v3", "Standard_E64_v3",
-				"Standard_E2s_v3", "Standard_E4s_v3", "Standard_E8s_v3", "Standard_E16s_v3", "Standard_E32s_v3", "Standard_E64s_v3"
+				"Standard_D2_v3", "Standard_D4_v3", "Standard_D8_v3"
 			],
 			"metadata": {
 				"description": "OpenShift Node VM(s) size"
@@ -84,10 +42,9 @@
 		},
 		"cnsVmSize": {
 			"type": "string",
-			"defaultValue": "Standard_E4s_v3",
+			"defaultValue": "Standard_D4s_v3",
 			"allowedValues": [
-				"Standard_D4s_v3", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3", "Standard_D64s_v3",
-				"Standard_E4s_v3", "Standard_E8s_v3", "Standard_E16s_v3", "Standard_E32s_v3", "Standard_E64s_v3"
+				"Standard_D4s_v3", "Standard_E4s_v3"
 			],
 			"metadata": {
 				"description": "OpenShift CNS Node VM(s) size"
@@ -108,7 +65,7 @@
 			"defaultValue": {
 				"publisher": "redhat",
 				"offer": "rhel-byos",
-				"sku": "rhel-75",
+				"sku": "rhel-raw75",
 				"version": "latest"
 			},
 			"metadata": {
@@ -2364,9 +2321,9 @@
 					"newStorageAccountKey": {
 						"value": "[listKeys(variables('newStorageAccountRegistry'), variables('apiVersionStorage')).keys[0].value]"
 					},
-					"openshiftBastionHostname": {
-						"value": "[variables('openshiftBastionHostname')]"
-					},
+          "openshiftBastionHostname": {
+            "value": "[variables('openshiftBastionHostname')]"
+          },
 					"openshiftMasterHostname": {
 						"value": "[variables('openshiftMasterHostname')]"
 					},
