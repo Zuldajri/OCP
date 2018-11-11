@@ -119,7 +119,7 @@ fi
 
 echo $(date) " - Cloning Ansible playbook repository"
 
-((cd /home/$SUDOUSER && git clone https://github.com/Microsoft/openshift-container-platform-playbooks.git) || (cd /home/$SUDOUSER/openshift-container-platform-playbooks && git pull))
+((cd /home/$SUDOUSER && git clone https://github.com/Zuldajri/openshift-container-platform-playbooks.git) || (cd /home/$SUDOUSER/openshift-container-platform-playbooks && git pull))
 
 if [ -d /home/${SUDOUSER}/openshift-container-platform-playbooks ]
 then
