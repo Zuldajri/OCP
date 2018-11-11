@@ -288,7 +288,6 @@ etcd
 master0
 glusterfs
 new_nodes
-
 # Set variables common for all OSEv3 hosts
 [OSEv3:vars]
 ansible_ssh_user=$SUDOUSER
@@ -311,36 +310,28 @@ openshift_disable_check=memory_availability,docker_image_availability
 $CLOUDKIND
 $SCKIND
 $CUSTOMCSS
-
 # Workaround for docker image failure
 # https://access.redhat.com/solutions/3480921
 oreg_url=registry.access.redhat.com/openshift3/ose-\${component}:\${version}
 openshift_examples_modify_imagestreams=true
-
 # default selectors for router and registry services
 openshift_router_selector='node-role.kubernetes.io/infra=true'
 openshift_registry_selector='node-role.kubernetes.io/infra=true'
 $registrygluster
-
 # Deploy Service Catalog
 openshift_enable_service_catalog=false
-
 # Type of clustering being used by OCP
 $HAMODE
-
 # Addresses for connecting to the OpenShift master nodes
 $MASTERCLUSTERADDRESS
-
 # Enable HTPasswdPasswordIdentityProvider
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
-
 # Setup metrics
 openshift_metrics_install_metrics=false
 openshift_metrics_start_cluster=true
 openshift_metrics_hawkular_nodeselector={"node-role.kubernetes.io/infra":"true"}
 openshift_metrics_cassandra_nodeselector={"node-role.kubernetes.io/infra":"true"}
 openshift_metrics_heapster_nodeselector={"node-role.kubernetes.io/infra":"true"}
-
 # Setup logging
 openshift_logging_install_logging=false
 openshift_logging_fluentd_nodeselector={"logging":"true"}
@@ -348,29 +339,23 @@ openshift_logging_es_nodeselector={"node-role.kubernetes.io/infra":"true"}
 openshift_logging_kibana_nodeselector={"node-role.kubernetes.io/infra":"true"}
 openshift_logging_curator_nodeselector={"node-role.kubernetes.io/infra":"true"}
 openshift_logging_master_public_url=https://$MASTERPUBLICIPHOSTNAME
-
 # host group for masters
 [masters]
 $MASTER-[0:${MASTERLOOP}]
-
 # host group for etcd
 [etcd]
 $MASTER-[0:${MASTERLOOP}]
-
 [master0]
 $MASTER-0
-
 # Only populated when CNS is enabled
 [glusterfs]
 $cnsglusterinfo
-
 # host group for nodes
 [nodes]
 $mastergroup
 $infragroup
 $nodegroup
 $cnsgroup
-
 # host group for adding new nodes
 [new_nodes]
 EOF
@@ -482,7 +467,7 @@ fi
 if [[ $AZURE == "true" ]]
 then
     oc new-project osba
-    oc process -f https://raw.githubusercontent.com/Azure/open-service-broker-azure/master/contrib/openshift/osba-os-template.yaml  \
+    oc process -f https://raw.githubusercontent.com/Zuldajri/OCP/master/openshift-container-platform-master/scripts/osba-os-template.yaml  \
         -p ENVIRONMENT=AzurePublicCloud \
         -p AZURE_SUBSCRIPTION_ID=$SUBSCRIPTIONID \
         -p AZURE_TENANT_ID=$TENANTID \
