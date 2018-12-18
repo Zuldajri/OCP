@@ -5,12 +5,6 @@
 		"deploymentSize": {
         	"type": "string",
         	"defaultValue": "Small",
-       		"allowedValues": [
-            	"DevTest",
-            	"Small",
-           	    "Medium",
-           		"Large"
-        ]
     },
 		"osImageType": {
 			"type": "string",
