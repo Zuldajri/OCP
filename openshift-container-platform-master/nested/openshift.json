@@ -5,13 +5,10 @@
 		"deploymentSize": {
         	"type": "string",
         	"defaultValue": "Small",
-    },
+    		},
 		"osImageType": {
 			"type": "string",
 			"defaultValue": "defaultgallery",
-			"allowedValues": [
-				"defaultgallery", "marketplace"
-			],
 			"metadata": {
 				"description": "OpenShift OS image type. 'defaultgallery' will use the on demand RHEL image. 'marketplace' allows you to define a third party marketplace image to use."
 			}
@@ -55,9 +52,6 @@
 		"enableMetrics": {
 			"type": "string",
 			"defaultValue": "false",
-			"allowedValues": [
-				"true", "false"
-			],
 			"metadata": {
 				"description": "Enable OpenShift Metrics: true or false"
 			}
@@ -65,9 +59,6 @@
 		"enableLogging": {
 			"type": "string",
 			"defaultValue": "false",
-			"allowedValues": [
-				"true", "false"
-			],
 			"metadata": {
 				"description": "Enable OpenShift Logging: true or false"
 			}
@@ -75,9 +66,6 @@
 		"enableCNS": {
 			"type": "string",
 			"defaultValue": "false",
-			"allowedValues": [
-				"true", "false"
-			],
 			"metadata": {
 				"description": "Enable Container Native Storage: true or false"
 			}
@@ -151,9 +139,6 @@
 		"defaultSubDomainType": {
 			"type": "string",
 			"defaultValue": "nipio",
-			"allowedValues": [
-				"nipio", "custom"
-			],
 			"metadata": {
 				"description": "Default Subdomain type - nip.io or custom (defined in next parameter)"
 			}
