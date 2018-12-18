@@ -29,7 +29,7 @@
 			"type": "string",
 			"defaultValue": "mycluster",
 			"minLength": 4,
-			"maxLength": 20,
+			"maxLength": 60,
 			"metadata": {
 				"description": "OpenShift cluster prefix. Used to generate master, infra and node hostnames. Maximum of 20 characters."
 			}
