@@ -9,7 +9,9 @@
 			}
 		}
 	},
-	"variables": {},
+	"variables": {
+	"location": "[resourceGroup().location]"
+	},
 	"resources": [
 		{
 		"type": "Microsoft.Resources/resourceGroups",
