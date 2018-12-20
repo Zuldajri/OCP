@@ -1,0 +1,125 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"sshPrivateKey": {
+			"type": "string",
+			"metadata": {
+				"description": "SSH private key for all VMs"
+			}
+		},
+		"aadObjectId": {
+			"type": "string",
+			"defaultValue": "",
+			"metadata": {
+				"description": "Azure AD Object ID"
+			}
+		}
+
+			
+	},
+	"variables": {
+        "location": "[resourceGroup().location]",
+        "keyVaultResourceGroup": "[resourceGroup().name]",
+		"keyVaultName": "[concat('KV', uniqueString(concat(resourceGroup().id, 'ocp')))]",
+		"keyVaultSecret": "[concat('Secret', uniqueString(concat(resourceGroup().id, 'ocp')))]",
+		"tenantId": "[subscription().tenantId]"
+		
+	},
+	"resources": [
+		{
+			"type": "Microsoft.KeyVault/vaults",
+			"name": "[variables('keyVaultName')]",
+			"apiVersion": "2016-10-01",
+			"location": "[variables('location')]",
+			"properties": {
+			  "enabledForDeployment": false,
+			  "enabledForTemplateDeployment": true,
+			  "tenantId": "[variables('tenantId')]",
+			  "accessPolicies": [
+				{
+					"tenantId": "[variables('tenantId')]",
+					"objectId": "[parameters('aadObjectId')]",
+					"permissions": {
+						"keys": [
+							"get",
+							"create",
+							"delete",
+							"list",
+							"update",
+							"import",
+							"backup",
+							"restore",
+							"recover"
+						],
+						"secrets": [
+							"get",
+							"list",
+							"set",
+							"delete",
+							"backup",
+							"restore",
+							"recover"
+						],
+						"certificates": [
+							"get",
+							"list",
+							"delete",
+							"create",
+							"import",
+							"update",
+							"managecontacts",
+							"getissuers",
+							"listissuers",
+							"setissuers",
+							"deleteissuers",
+							"manageissuers",
+							"recover"
+						],
+						"storage": [
+							"get",
+							"list",
+							"delete",
+							"set",
+							"update",
+							"regeneratekey",
+							"setsas",
+							"listsas",
+							"getsas",
+							"deletesas"
+						]
+					}
+				}
+			],
+			  "sku": {
+				"name": "standard",
+				"family": "A"
+			  }
+			}
+		  },
+		  {
+			"type": "Microsoft.KeyVault/vaults/secrets",
+			"name": "[concat(variables('keyVaultName'), '/', variables('keyVaultSecret'))]",
+			"apiVersion": "2016-10-01",
+			"properties": {
+			  "value": "[parameters('sshPrivateKey')]"
+			},
+			"dependsOn": [
+			  "[concat('Microsoft.KeyVault/vaults/', variables('keyVaultName'))]"
+			]
+	  }
+			
+			
+		
+	],
+	"outputs": {
+        "resourceIDKV": {
+            "type": "string",
+            "value": "[resourceId(subscription().subscriptionId, variables('keyVaultResourceGroup'), 'Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+        },
+        "secretName": {
+            "type": "string",
+            "value": "[variables('keyVaultSecret')]"
+        }
+	}
+}
