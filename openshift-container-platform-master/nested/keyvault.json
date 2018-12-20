@@ -20,7 +20,6 @@
 	},
 	"variables": {
         "location": "[resourceGroup().location]",
-        "keyVaultResourceGroup": "[concat(variables('resourceGroupName'), 'kv')]",
         "resourceGroupName": "[resourceGroup().name]",
 		"keyVaultName": "[concat('KV', uniqueString(concat(resourceGroup().id, 'ocp')))]",
 		"keyVaultSecret": "[concat('Secret', uniqueString(concat(resourceGroup().id, 'ocp')))]",
@@ -116,7 +115,7 @@
 	"outputs": {
         "resourceIDKV": {
             "type": "string",
-            "value": "[resourceId(subscription().subscriptionId, variables('keyVaultResourceGroup'), 'Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+            "value": "[resourceId(subscription().subscriptionId, variables('resourceGroupName'), 'Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
         },
         "secretName": {
             "type": "string",
