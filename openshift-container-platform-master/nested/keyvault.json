@@ -113,9 +113,9 @@
 		
 	],
 	"outputs": {
-        "resourceIDKV": {
+        "KV": {
             "type": "string",
-            "value": "[resourceId(subscription().subscriptionId, variables('resourceGroupName'), 'Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+            "value": "[variables('keyVaultName')]"
         },
         "secretName": {
             "type": "string",
