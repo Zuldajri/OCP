@@ -122,22 +122,16 @@
 				"description": "SSH public key for all VMs"
 			}
 		},
-		"KV": {
+		"resourceIDKV": {
 			"type": "string",
 			"metadata": {
-				"description": "Keyvault"
+				"description": "resourceID of the Keyvault"
 			}
 		},
 		"secretName": {
 			"type": "string",
 			"metadata": {
 				"description": "Key Vault Secret Name that contains the Private Key"
-			}
-		},
-		"kvresourceGroupName": {
-			"type": "string",
-			"metadata": {
-				"description": "KV RG"
 			}
 		},
 		"aadClientId": {
@@ -2010,7 +2004,7 @@
 					"sshPrivateKey": {
 						"reference": {
 							"keyVault": {
-								"id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('kvresourceGroupName'), '/providers/Microsoft.KeyVault/vaults/', parameters('KV'))]"
+								"id": "[parameters('resourceIDKV')]"
 							},
 							"secretName": "[parameters('secretName')]"
 						}
