@@ -20,7 +20,8 @@
 	},
 	"variables": {
         "location": "[resourceGroup().location]",
-        "keyVaultResourceGroup": "[resourceGroup().name]",
+        "keyVaultResourceGroup": "[concat(variables('resourceGroupName'), 'kv')]",
+        "resourceGroupName": "[resourceGroup().name]",
 		"keyVaultName": "[concat('KV', uniqueString(concat(resourceGroup().id, 'ocp')))]",
 		"keyVaultSecret": "[concat('Secret', uniqueString(concat(resourceGroup().id, 'ocp')))]",
 		"tenantId": "[subscription().tenantId]"
