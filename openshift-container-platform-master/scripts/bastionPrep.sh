@@ -10,7 +10,7 @@ SUDOUSER=$5
 # Generate private keys for use by Ansible
 echo $(date) " - Generating Private keys for use by Ansible for OpenShift Installation"
 
-runuser -l $SUDOUSER -c "echo \"$PRIVATEKEY\" > ~/.ssh/id_rsa"
+runuser -l $SUDOUSER -c "echo -e \"$PRIVATEKEY\" > ~/.ssh/id_rsa"
 runuser -l $SUDOUSER -c "chmod 600 ~/.ssh/id_rsa*"
 
 # Remove RHUI
