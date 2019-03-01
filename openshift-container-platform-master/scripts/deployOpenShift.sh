@@ -115,6 +115,17 @@ openshift_cloudprovider_azure_location=$LOCATION"
 	fi
 fi
 
+# Cloning OpenShift-Ansible repository
+echo $(date) " - Cloning OpenShift Ansible playbook repository"
+((cd /usr/share/ansible/ && git clone https://github.com/Zuldajri/openshift-ansible.git) || (cd /usr/share/ansible/openshift-ansible && git pull))
+if [ -d /usr/share/ansible/openshift-ansible ]
+then
+echo " - Retrieved playbooks successfully"
+else
+echo " - Retrieval of playbooks failed"
+exit 99
+fi
+
 # Cloning Ansible playbook repository
 
 echo $(date) " - Cloning Ansible playbook repository"
@@ -147,7 +158,7 @@ echo $(date) " - Creating Master nodes grouping"
 for (( c=0; c<$MASTERCOUNT; c++ ))
 do
     mastergroup="$mastergroup
-$MASTER-$c openshift_hostname=$MASTER-$c openshift_node_group_name='node-config-master'"
+$MASTER-$c openshift_node_group_name='node-config-master'"
 done
 
 # Create Infra nodes grouping 
@@ -155,7 +166,7 @@ echo $(date) " - Creating Infra nodes grouping"
 for (( c=0; c<$INFRACOUNT; c++ ))
 do
     infragroup="$infragroup
-$INFRA-$c openshift_hostname=$INFRA-$c openshift_node_group_name='node-config-infra'"
+$INFRA-$c openshift_node_group_name='node-config-infra'"
 done
 
 # Create Nodes grouping
@@ -163,7 +174,7 @@ echo $(date) " - Creating Nodes grouping"
 for (( c=0; c<$NODECOUNT; c++ ))
 do
     nodegroup="$nodegroup
-$NODE-$c openshift_hostname=$NODE-$c openshift_node_group_name='node-config-compute'"
+$NODE-$c openshift_node_group_name='node-config-compute'"
 done
 
 # Create CNS nodes grouping if CNS is enabled
@@ -174,7 +185,7 @@ then
     for (( c=0; c<$CNSCOUNT; c++ ))
     do
         cnsgroup="$cnsgroup
-$CNS-$c openshift_hostname=$CNS-$c openshift_node_group_name='node-config-compute'"
+$CNS-$c openshift_node_group_name='node-config-compute'"
     done
 fi
 
