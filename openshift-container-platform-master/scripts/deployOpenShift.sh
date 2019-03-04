@@ -117,7 +117,7 @@ fi
 
 # Cloning OpenShift-Ansible repository
 echo $(date) " - Cloning OpenShift Ansible playbook repository"
-((cd /usr/share/ansible/ && git clone https://github.com/Zuldajri/openshift-ansible.git --branch release-3.10 --single-branch) || (cd /usr/share/ansible/openshift-ansible && git pull))
+((cd /usr/share/ansible/ && git clone https://github.com/Zuldajri/openshift-ansible.git) || (cd /usr/share/ansible/openshift-ansible && git pull))
 if [ -d /usr/share/ansible/openshift-ansible ]
 then
 echo " - Retrieved playbooks successfully"
