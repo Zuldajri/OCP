@@ -351,9 +351,6 @@ $MASTER-0
 # Only populated when CNS is enabled
 [glusterfs]
 $cnsglusterinfo
-openshift_storage_glusterfs_image=registry.redhat.io/rhgs3/rhgs-server-rhel7:v3.11
-openshift_storage_glusterfs_block_image=registry.redhat.io/rhgs3/rhgs-gluster-block-prov-rhel7:v3.11
-openshift_storage_glusterfs_heketi_image=registry.redhat.io/rhgs3/rhgs-volmanager-rhel7:v3.11
 
 # host group for nodes
 [nodes]
