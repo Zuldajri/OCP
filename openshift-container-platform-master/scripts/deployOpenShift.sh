@@ -351,7 +351,6 @@ $MASTER-0
 # Only populated when CNS is enabled
 [glusterfs]
 $cnsglusterinfo
-
 # host group for nodes
 [nodes]
 $mastergroup
