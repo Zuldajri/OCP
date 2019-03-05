@@ -115,16 +115,6 @@ openshift_cloudprovider_azure_location=$LOCATION"
 	fi
 fi
 
-# Cloning OpenShift-Ansible repository
-echo $(date) " - Cloning OpenShift Ansible playbook repository"
-((cd /usr/share/ansible/ && git clone https://github.com/Zuldajri/openshift-ansible.git) || (cd /usr/share/ansible/openshift-ansible && git pull))
-if [ -d /usr/share/ansible/openshift-ansible ]
-then
-echo " - Retrieved playbooks successfully"
-else
-echo " - Retrieval of playbooks failed"
-exit 99
-fi
 
 # Cloning Ansible playbook repository
 
